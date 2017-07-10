@@ -1,0 +1,85 @@
+@startuml
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+class java.io.FileInputStream
+class java.io.FileNotFoundException
+class java.io.IOException
+class java.math.BigDecimal
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.sql.Statement
+class java.sql.Timestamp
+class java.util.ArrayList
+class java.util.List
+class java.util.Properties
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.swing.DefaultComboBoxModel
+class javax.swing.JDialog
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class org.jasypt.util.password.StrongPasswordEncryptor
+class robin.IMS.DAO.ComputersDAO
+class robin.IMS.DAO.DAOUtils
+class robin.IMS.DAO.UserDAO
+class robin.IMS.IMS_App.IMS_APP
+class robin.IMS.core.Computers
+class robin.IMS.core.User
+class robin.IMS.encryptUtils.PasswordUtils
+class robin.IMS.ui.users.UserLoginDialog
+robin.IMS.DAO.ComputersDAO ..> java.io.FileInputStream
+robin.IMS.DAO.ComputersDAO ..> java.math.BigDecimal
+robin.IMS.DAO.ComputersDAO ..> java.sql.Connection
+robin.IMS.DAO.ComputersDAO ..> java.sql.DriverManager
+robin.IMS.DAO.ComputersDAO ..> java.sql.PreparedStatement
+robin.IMS.DAO.ComputersDAO ..> java.sql.ResultSet
+robin.IMS.DAO.ComputersDAO ..> java.sql.SQLException
+robin.IMS.DAO.ComputersDAO ..> java.sql.Statement
+robin.IMS.DAO.ComputersDAO ..> java.sql.Timestamp
+robin.IMS.DAO.ComputersDAO ..> java.util.ArrayList
+robin.IMS.DAO.ComputersDAO ..> java.util.List
+robin.IMS.DAO.ComputersDAO ..> java.util.Properties
+robin.IMS.DAO.ComputersDAO ..> robin.IMS.core.Computers
+robin.IMS.DAO.DAOUtils ..> java.sql.Connection
+robin.IMS.DAO.DAOUtils ..> java.sql.ResultSet
+robin.IMS.DAO.DAOUtils ..> java.sql.SQLException
+robin.IMS.DAO.DAOUtils ..> java.sql.Statement
+robin.IMS.DAO.UserDAO ..> java.io.FileInputStream
+robin.IMS.DAO.UserDAO ..> java.io.FileNotFoundException
+robin.IMS.DAO.UserDAO ..> java.io.IOException
+robin.IMS.DAO.UserDAO ..> java.math.BigDecimal
+robin.IMS.DAO.UserDAO ..> java.sql.Connection
+robin.IMS.DAO.UserDAO ..> java.sql.DriverManager
+robin.IMS.DAO.UserDAO ..> java.sql.PreparedStatement
+robin.IMS.DAO.UserDAO ..> java.sql.ResultSet
+robin.IMS.DAO.UserDAO ..> java.sql.SQLException
+robin.IMS.DAO.UserDAO ..> java.sql.Statement
+robin.IMS.DAO.UserDAO ..> java.sql.Timestamp
+robin.IMS.DAO.UserDAO ..> java.util.ArrayList
+robin.IMS.DAO.UserDAO ..> java.util.List
+robin.IMS.DAO.UserDAO ..> java.util.Properties
+robin.IMS.DAO.UserDAO ..> java.util.logging.Level
+robin.IMS.DAO.UserDAO ..> java.util.logging.Logger
+robin.IMS.DAO.UserDAO ..> robin.IMS.core.User
+robin.IMS.DAO.UserDAO ..> robin.IMS.encryptUtils.PasswordUtils
+robin.IMS.IMS_App.IMS_APP ..> java.lang.SuppressWarnings
+robin.IMS.IMS_App.IMS_APP --|> javax.swing.JFrame
+robin.IMS.IMS_App.IMS_APP ..> robin.IMS.ui.users.UserLoginDialog
+robin.IMS.core.Computers ..> java.lang.Override
+robin.IMS.core.Computers ..> java.math.BigDecimal
+robin.IMS.core.User ..> java.lang.Override
+robin.IMS.encryptUtils.PasswordUtils ..> org.jasypt.util.password.StrongPasswordEncryptor
+robin.IMS.ui.users.UserLoginDialog ..> java.lang.Override
+robin.IMS.ui.users.UserLoginDialog ..> java.lang.SuppressWarnings
+robin.IMS.ui.users.UserLoginDialog ..> java.util.List
+robin.IMS.ui.users.UserLoginDialog ..> javax.swing.DefaultComboBoxModel
+robin.IMS.ui.users.UserLoginDialog --|> javax.swing.JDialog
+robin.IMS.ui.users.UserLoginDialog ..> javax.swing.JOptionPane
+robin.IMS.ui.users.UserLoginDialog ..> robin.IMS.DAO.DAOUtils
+robin.IMS.ui.users.UserLoginDialog ..> robin.IMS.DAO.UserDAO
+robin.IMS.ui.users.UserLoginDialog ..> robin.IMS.IMS_App.IMS_APP
+robin.IMS.ui.users.UserLoginDialog ..> robin.IMS.core.User
+@enduml
