@@ -22,15 +22,15 @@ import javax.persistence.Transient;
  * @author Devgan's
  */
 @Entity
-@Table(name = "computers", catalog = "robin", schema = "")
+@Table(name = "miscellaneous", catalog = "robin", schema = "")
 @NamedQueries({
-    @NamedQuery(name = "Computers.findAll", query = "SELECT c FROM Computers c")
-    , @NamedQuery(name = "Computers.findById", query = "SELECT c FROM Computers c WHERE c.id = :id")
-    , @NamedQuery(name = "Computers.findByItemName", query = "SELECT c FROM Computers c WHERE c.itemName = :itemName")
-    , @NamedQuery(name = "Computers.findByManufacturer", query = "SELECT c FROM Computers c WHERE c.manufacturer = :manufacturer")
-    , @NamedQuery(name = "Computers.findByQuantity", query = "SELECT c FROM Computers c WHERE c.quantity = :quantity")
-    , @NamedQuery(name = "Computers.findByDateAdded", query = "SELECT c FROM Computers c WHERE c.dateAdded = :dateAdded")})
-public class Computers implements Serializable {
+    @NamedQuery(name = "Miscellaneous.findAll", query = "SELECT m FROM Miscellaneous m")
+    , @NamedQuery(name = "Miscellaneous.findById", query = "SELECT m FROM Miscellaneous m WHERE m.id = :id")
+    , @NamedQuery(name = "Miscellaneous.findByItemName", query = "SELECT m FROM Miscellaneous m WHERE m.itemName = :itemName")
+    , @NamedQuery(name = "Miscellaneous.findByManufacturer", query = "SELECT m FROM Miscellaneous m WHERE m.manufacturer = :manufacturer")
+    , @NamedQuery(name = "Miscellaneous.findByQuantity", query = "SELECT m FROM Miscellaneous m WHERE m.quantity = :quantity")
+    , @NamedQuery(name = "Miscellaneous.findByDateAdded", query = "SELECT m FROM Miscellaneous m WHERE m.dateAdded = :dateAdded")})
+public class Miscellaneous implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -48,22 +48,24 @@ public class Computers implements Serializable {
     private String manufacturer;
     @Basic(optional = false)
     @Column(name = "quantity")
-    private int quantity;
+    private String quantity;
+    @Basic(optional = false)
     @Column(name = "dateAdded")
     private String dateAdded;
 
-    public Computers() {
+    public Miscellaneous() {
     }
 
-    public Computers(Integer id) {
+    public Miscellaneous(Integer id) {
         this.id = id;
     }
 
-    public Computers(Integer id, String itemName, String manufacturer, int quantity) {
+    public Miscellaneous(Integer id, String itemName, String manufacturer, String quantity, String dateAdded) {
         this.id = id;
         this.itemName = itemName;
         this.manufacturer = manufacturer;
         this.quantity = quantity;
+        this.dateAdded = dateAdded;
     }
 
     public Integer getId() {
@@ -96,12 +98,12 @@ public class Computers implements Serializable {
         changeSupport.firePropertyChange("manufacturer", oldManufacturer, manufacturer);
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        int oldQuantity = this.quantity;
+    public void setQuantity(String quantity) {
+        String oldQuantity = this.quantity;
         this.quantity = quantity;
         changeSupport.firePropertyChange("quantity", oldQuantity, quantity);
     }
@@ -126,10 +128,10 @@ public class Computers implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Computers)) {
+        if (!(object instanceof Miscellaneous)) {
             return false;
         }
-        Computers other = (Computers) object;
+        Miscellaneous other = (Miscellaneous) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,7 +140,7 @@ public class Computers implements Serializable {
 
     @Override
     public String toString() {
-        return "robin.IMS.IMS_App.Computers[ id=" + id + " ]";
+        return "robin.IMS.IMS_App.Miscellaneous[ id=" + id + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

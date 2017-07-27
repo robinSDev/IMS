@@ -1,12 +1,16 @@
+
+/**
+ * @author Robin Singh Devgan
+ * Intern, Summer 2017
+ */
+
 package robin.IMS.ui.users;
 
-import robin.IMS.DAO.DAOUtils;
+import java.awt.event.KeyEvent;
 import robin.IMS.DAO.UserDAO;
-import robin.IMS.core.User;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import robin.IMS.IMS_App.IMS_APP;
+import robin.IMS.items.AddUser;
 
 
 /**
@@ -45,6 +49,7 @@ public class UserLoginDialog extends javax.swing.JDialog {
         passwordField = new javax.swing.JPasswordField();
         Login = new javax.swing.JButton();
         loginField = new javax.swing.JTextField();
+        addUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Welcome to IMS, Please Login!");
@@ -53,10 +58,23 @@ public class UserLoginDialog extends javax.swing.JDialog {
 
         password_Label.setText("Password");
 
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
+
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginActionPerformed(evt);
+            }
+        });
+
+        addUser.setText("Add New User");
+        addUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserActionPerformed(evt);
             }
         });
 
@@ -65,17 +83,21 @@ public class UserLoginDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Login)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(password_Label)
                             .addComponent(ID_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(loginField))))
+                            .addComponent(loginField)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(addUser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                        .addComponent(Login)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,7 +112,9 @@ public class UserLoginDialog extends javax.swing.JDialog {
                     .addComponent(password_Label)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Login)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Login)
+                    .addComponent(addUser))
                 .addGap(13, 13, 13))
         );
 
@@ -99,6 +123,32 @@ public class UserLoginDialog extends javax.swing.JDialog {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
+        Login();
+    }//GEN-LAST:event_LoginActionPerformed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            Login();
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+        // TODO add your handling code here:
+        AddUser a = new AddUser();
+    }//GEN-LAST:event_addUserActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ID_Label;
+    private javax.swing.JButton Login;
+    private javax.swing.JButton addUser;
+    private javax.swing.JTextField loginField;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel password_Label;
+    // End of variables declaration//GEN-END:variables
+
+    private void Login() {
         try {
 		String loginID = loginField.getText();
 		// get the password
@@ -127,16 +177,6 @@ public class UserLoginDialog extends javax.swing.JDialog {
 		JOptionPane.showMessageDialog(this, "Error during login", "Error",
 				JOptionPane.ERROR_MESSAGE);			
 		}
-    }//GEN-LAST:event_LoginActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ID_Label;
-    private javax.swing.JButton Login;
-    private javax.swing.JTextField loginField;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JLabel password_Label;
-    // End of variables declaration//GEN-END:variables
-
+    }
     
 }

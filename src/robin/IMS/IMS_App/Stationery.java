@@ -22,15 +22,15 @@ import javax.persistence.Transient;
  * @author Devgan's
  */
 @Entity
-@Table(name = "computers", catalog = "robin", schema = "")
+@Table(name = "stationery", catalog = "robin", schema = "")
 @NamedQueries({
-    @NamedQuery(name = "Computers.findAll", query = "SELECT c FROM Computers c")
-    , @NamedQuery(name = "Computers.findById", query = "SELECT c FROM Computers c WHERE c.id = :id")
-    , @NamedQuery(name = "Computers.findByItemName", query = "SELECT c FROM Computers c WHERE c.itemName = :itemName")
-    , @NamedQuery(name = "Computers.findByManufacturer", query = "SELECT c FROM Computers c WHERE c.manufacturer = :manufacturer")
-    , @NamedQuery(name = "Computers.findByQuantity", query = "SELECT c FROM Computers c WHERE c.quantity = :quantity")
-    , @NamedQuery(name = "Computers.findByDateAdded", query = "SELECT c FROM Computers c WHERE c.dateAdded = :dateAdded")})
-public class Computers implements Serializable {
+    @NamedQuery(name = "Stationery.findAll", query = "SELECT s FROM Stationery s")
+    , @NamedQuery(name = "Stationery.findById", query = "SELECT s FROM Stationery s WHERE s.id = :id")
+    , @NamedQuery(name = "Stationery.findByItemName", query = "SELECT s FROM Stationery s WHERE s.itemName = :itemName")
+    , @NamedQuery(name = "Stationery.findByManufacturer", query = "SELECT s FROM Stationery s WHERE s.manufacturer = :manufacturer")
+    , @NamedQuery(name = "Stationery.findByQuantity", query = "SELECT s FROM Stationery s WHERE s.quantity = :quantity")
+    , @NamedQuery(name = "Stationery.findByDateAdded", query = "SELECT s FROM Stationery s WHERE s.dateAdded = :dateAdded")})
+public class Stationery implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -48,22 +48,24 @@ public class Computers implements Serializable {
     private String manufacturer;
     @Basic(optional = false)
     @Column(name = "quantity")
-    private int quantity;
+    private String quantity;
+    @Basic(optional = false)
     @Column(name = "dateAdded")
     private String dateAdded;
 
-    public Computers() {
+    public Stationery() {
     }
 
-    public Computers(Integer id) {
+    public Stationery(Integer id) {
         this.id = id;
     }
 
-    public Computers(Integer id, String itemName, String manufacturer, int quantity) {
+    public Stationery(Integer id, String itemName, String manufacturer, String quantity, String dateAdded) {
         this.id = id;
         this.itemName = itemName;
         this.manufacturer = manufacturer;
         this.quantity = quantity;
+        this.dateAdded = dateAdded;
     }
 
     public Integer getId() {
@@ -96,12 +98,12 @@ public class Computers implements Serializable {
         changeSupport.firePropertyChange("manufacturer", oldManufacturer, manufacturer);
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        int oldQuantity = this.quantity;
+    public void setQuantity(String quantity) {
+        String oldQuantity = this.quantity;
         this.quantity = quantity;
         changeSupport.firePropertyChange("quantity", oldQuantity, quantity);
     }
@@ -126,10 +128,10 @@ public class Computers implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Computers)) {
+        if (!(object instanceof Stationery)) {
             return false;
         }
-        Computers other = (Computers) object;
+        Stationery other = (Stationery) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,7 +140,7 @@ public class Computers implements Serializable {
 
     @Override
     public String toString() {
-        return "robin.IMS.IMS_App.Computers[ id=" + id + " ]";
+        return "robin.IMS.IMS_App.Stationery[ id=" + id + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

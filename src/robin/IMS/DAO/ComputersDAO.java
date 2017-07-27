@@ -1,25 +1,23 @@
+
+/**
+ * @author Robin Singh Devgan
+ * Intern, Summer 2017
+ */
+
 package robin.IMS.DAO;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //import com.robin.jdbc.employeesearch.core.AuditHistory;
-import robin.IMS.core.Computers;
 
 public class ComputersDAO {
     
@@ -38,7 +36,6 @@ private Connection myConn;
 			return;
 		}
 
-            
             props.load(input);
             String user = props.getProperty("user");
             String password = props.getProperty("password");

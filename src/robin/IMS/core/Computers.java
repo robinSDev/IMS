@@ -1,3 +1,9 @@
+
+/**
+ * @author Robin Singh Devgan
+ * Intern, Summer 2017
+ */
+
 package robin.IMS.core;
 
 import java.math.BigDecimal;
